@@ -7,19 +7,24 @@ import morgan from 'morgan';
 import mongoose from 'mongoose';
 
 // ROUTERS
-import gameRouter from './routes/gamesRouter.js';
+import gamesRouter from './routes/gamesRouter.js';
 import authRouter from './routes/authRouter.js';
+import userRouter from './routes/userRouter.js';
 
 // MIDDLEWARE
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
+import { authenticateUser } from './middleware/authMiddleware.js';
+import cookieParser from 'cookie-parser';
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+app.use(cookieParser());
 app.use(express.json());
 
-app.use('/api/v1/games', gameRouter);
+app.use('/api/v1/games', authenticateUser, gamesRouter);
+app.use('/api/v1/users', authenticateUser, userRouter);
 app.use('/api/v1/auth', authRouter);
 
 app.use('*', (req, res) => {
