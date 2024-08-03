@@ -16,7 +16,7 @@ const Landing = () => {
           </p>
           <Link
             to='/login'
-            className='btn btn-primary font-bold uppercase'
+            className='btn btn-warning font-bold uppercase'
           >
             Login/Register
           </Link>
