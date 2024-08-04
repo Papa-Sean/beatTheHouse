@@ -1,7 +1,11 @@
 import { body, param, validationResult } from 'express-validator';
-import { BadRequestError, NotFoundError } from '../errors/customErrors.js';
+import {
+  BadRequestError,
+  NotFoundError,
+  UnauthorizedError,
+} from '../errors/customErrors.js';
 import mongoose from 'mongoose';
-import Game from '../models/GameModel.js';
+import Bet from '../models/BetModel.js';
 import User from '../models/UserModel.js';
 import { NFL_TEAMS } from '../utils/constants.js';
 
@@ -14,6 +18,9 @@ const withValidationErrors = (validateValues) => {
         const errorMessages = errors.array().map((error) => error.msg);
         if (errorMessages[0].startsWith('No game')) {
           throw new NotFoundError(errorMessages);
+        }
+        if (errorMessages[0].startsWith('Not authorized')) {
+          throw new UnauthorizedError(errorMessages);
         }
         throw new BadRequestError(errorMessages);
       }
@@ -36,11 +43,15 @@ export const validateGameInput = withValidationErrors([
 ]);
 
 export const validateIdParam = withValidationErrors([
-  param('id').custom(async (value) => {
+  param('id').custom(async (value, { req }) => {
     const isValidId = mongoose.Types.ObjectId.isValid(value);
     if (!isValidId) throw new BadRequestError('Invalid MongoDB id...');
-    const game = await Game.findById(value);
-    if (!game) throw new NotFoundError(`No game with id: ${value}!`);
+    const bet = await Bet.findById(value);
+    if (!bet) throw new NotFoundError(`No game with id: ${value}!`);
+    const isAdmin = req.user.role === 'admin';
+    const isOwner = req.user.userId === bet.createdBy.toString();
+    if (!isAdmin && !isOwner)
+      throw new UnauthorizedError('Not authorized to access this route');
   }),
 ]);
 
@@ -90,4 +101,11 @@ export const validateUpdateUserInput = withValidationErrors([
     }),
   body('lastName').notEmpty().withMessage('Last Name required'),
   body('location').notEmpty().withMessage('User location required'),
+]);
+
+export const validateBetInput = withValidationErrors([
+  body('betTeam')
+    .isIn(Object.values(NFL_TEAMS))
+    .withMessage('Invalid team entry, try again.'),
+  body('betAmount').notEmpty().withMessage('Bet amount required...'),
 ]);

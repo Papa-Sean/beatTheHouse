@@ -1,7 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Form, useNavigation, redirect } from 'react-router-dom';
+import { FormRow } from '../components';
+import customFetch from '../../utils/customFetch';
+import { toast } from 'react-toastify';
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+
+  try {
+    await customFetch.post('/auth/register', data);
+    toast.success('Registration Successful!');
+    return redirect('/login');
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 
 const Register = () => {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
   return (
     <div className='hero bg-base-200 min-h-screen'>
       <div className='hero-content flex-col lg:flex-row-reverse'>
@@ -9,41 +28,61 @@ const Register = () => {
           <h1 className='text-5xl font-bold'>Register now!</h1>
         </div>
         <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl'>
-          <form className='card-body'>
-            <div className='form-control'>
-              <label className='label'>
-                <span className='label-text'>Email</span>
-              </label>
-              <input
-                type='email'
-                placeholder='email'
-                className='input input-bordered'
-                required
-              />
-            </div>
-            <div className='form-control'>
-              <label className='label'>
-                <span className='label-text'>Password</span>
-              </label>
-              <input
-                type='password'
-                placeholder='password'
-                className='input input-bordered'
-                required
-              />
-              <label className='label'>
-                <Link
-                  to='/login'
-                  className='label-text-alt link link-hover'
-                >
-                  Already a member? Login here!
-                </Link>
-              </label>
-            </div>
+          <Form
+            method='post'
+            className='card-body'
+          >
+            <FormRow
+              className='form-control capitalize'
+              type='text'
+              name='name'
+              defaultValue='Papa-Sean'
+            />
+            <FormRow
+              className='form-control capitalize'
+              type='text'
+              name='lastName'
+              labelText='last name'
+              defaultValue='Doe'
+            />
+            <FormRow
+              className='form-control capitalize'
+              type='location'
+              name='location'
+              defaultValue='Detroit'
+            />
+            <FormRow
+              className='form-control capitalize'
+              type='email'
+              name='email'
+              defaultValue='papa@papa.com'
+            />
+            <FormRow
+              className='form-control capitalize'
+              type='password'
+              name='password'
+              defaultValue='secret123'
+            />
             <div className='form-control mt-6'>
-              <button className='btn btn-warning'>Login</button>
+              <button
+                type='submit'
+                className='btn btn-block btn-warning'
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'submitting...' : 'submit'}
+              </button>
             </div>
-          </form>
+
+            <p>
+              Already a member? <span></span>
+              <Link
+                to='/login'
+                className='member-btn'
+              >
+                Login
+              </Link>
+            </p>
+          </Form>
         </div>
       </div>
     </div>

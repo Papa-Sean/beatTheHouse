@@ -10,6 +10,7 @@ import mongoose from 'mongoose';
 import gamesRouter from './routes/gamesRouter.js';
 import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
+import betsRouter from './routes/betsRouter.js';
 
 // MIDDLEWARE
 import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js';
@@ -29,6 +30,7 @@ app.get('/api/v1/test', (req, res) => {
 
 app.use('/api/v1/games', authenticateUser, gamesRouter);
 app.use('/api/v1/users', authenticateUser, userRouter);
+app.use('/api/v1/bets', authenticateUser, betsRouter);
 app.use('/api/v1/auth', authRouter);
 
 app.use('*', (req, res) => {

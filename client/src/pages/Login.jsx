@@ -1,7 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Form, redirect, useNavigation } from 'react-router-dom';
+import { FormRow } from '../components';
+import customFetch from '../../utils/customFetch';
+import { toast } from 'react-toastify';
+
+export const action = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+
+  try {
+    await customFetch.post('/auth/login', data);
+    toast.success('Logged in!');
+    return redirect('/dashboard');
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 
 const Login = () => {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
   return (
     <>
       <div className='hero bg-base-200 min-h-screen'>
@@ -10,41 +29,41 @@ const Login = () => {
             <h1 className='text-5xl font-bold'>Login now!</h1>
           </div>
           <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl'>
-            <form className='card-body'>
-              <div className='form-control'>
-                <label className='label'>
-                  <span className='label-text'>Email</span>
-                </label>
-                <input
-                  type='email'
-                  placeholder='email'
-                  className='input input-bordered'
-                  required
-                />
-              </div>
-              <div className='form-control'>
-                <label className='label'>
-                  <span className='label-text'>Password</span>
-                </label>
-                <input
-                  type='password'
-                  placeholder='password'
-                  className='input input-bordered'
-                  required
-                />
-                <label className='label'>
-                  <Link
-                    to='/register'
-                    className='label-text-alt link link-hover'
-                  >
-                    Not a member? Register here!
-                  </Link>
-                </label>
-              </div>
+            <Form
+              className='card-body'
+              method='post'
+            >
+              <FormRow
+                className='form-control capitalize'
+                type='email'
+                name='email'
+                defaultValue='papa@papa.com'
+              />
+              <FormRow
+                className='form-control capitalize'
+                type='password'
+                name='password'
+                defaultValue='secret123'
+              />
+              <p>
+                Not a member? Register <span></span>
+                <Link
+                  to='/register'
+                  className='member-btn'
+                >
+                  Here!
+                </Link>
+              </p>
+
               <div className='form-control mt-6'>
-                <button className='btn btn-warning'>Login</button>
+                <button
+                  className='btn btn-warning'
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'submitting...' : 'submit'}
+                </button>
               </div>
-            </form>
+            </Form>
           </div>
         </div>
       </div>

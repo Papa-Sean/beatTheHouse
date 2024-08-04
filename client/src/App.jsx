@@ -10,6 +10,9 @@ import {
   UserProfile,
 } from './pages';
 
+import { action as registerAction } from './pages/Register';
+import { action as loginAction } from './pages/Login';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -23,10 +26,12 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <Login />,
+        action: loginAction,
       },
       {
         path: 'register',
         element: <Register />,
+        action: registerAction,
       },
       {
         path: 'dashboard',
