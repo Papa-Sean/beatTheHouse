@@ -1,21 +1,37 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import '../index.css';
-import customFetch from '../../utils/customFetch';
-import { toast } from 'react-toastify';
+import { useDashboardContext } from '../pages/DashboardLayout';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
-  const logoutUser = async () => {
-    navigate('/');
-    await customFetch.get('/auth/logout');
-    toast.success('Logging Out...');
-  };
+  const { logoutUser } = useDashboardContext();
   return (
-    <div className='navbar bg-base-100'>
+    <div className='navbar bg-base-200'>
       <div className='flex-1'>
         <a className='btn btn-ghost text-xl'>BTH</a>
+      </div>
+      <div className='py-2 ml-11 flex-grow md:visible lg:visible '>
+        <NavLink
+          to='.'
+          className='btn btn-sm btn-warning mx-2'
+        >
+          All Games
+        </NavLink>
+        <NavLink
+          to='allbets'
+          className='btn btn-sm btn-warning mx-2'
+        >
+          All Bets
+        </NavLink>
+        <NavLink
+          to='profile'
+          className='btn btn-sm btn-warning mx-2'
+        >
+          User Profile
+        </NavLink>
+        <NavLink className='btn btn-sm btn-warning mx-2'>
+          Overall Scoreboard
+        </NavLink>
       </div>
       <div className='flex-none'>
         <ul className='menu menu-horizontal px-1'>

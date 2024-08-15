@@ -6,6 +6,7 @@ const BetSchema = new mongoose.Schema(
     betSpread: Number,
     betOdds: Number,
     betAmount: Number,
+    gameId: String,
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: 'BTHusers',

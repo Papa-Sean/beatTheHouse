@@ -9,7 +9,7 @@ export const getAllBets = async (req, res) => {
 export const createBet = async (req, res) => {
   req.body.createdBy = req.user.userId;
   const bet = await Bet.create(req.body);
-  res.status(StatusCodes.CREATED).json({ bet });
+  res.status(StatusCodes.CREATED).json({ bet, user: req.user.userId });
 };
 
 export const getSingleBet = async (req, res) => {

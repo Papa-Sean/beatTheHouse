@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Form, redirect, useNavigation } from 'react-router-dom';
 import { FormRow } from '../components';
-import customFetch from '../../utils/customFetch';
+import customFetch from '../utils/customFetch';
 import { toast } from 'react-toastify';
 
 export const action = async ({ request }) => {
@@ -23,7 +23,7 @@ const Login = () => {
   const isSubmitting = navigation.state === 'submitting';
   return (
     <>
-      <div className='hero bg-base-200 min-h-screen'>
+      <div className='hero bg-base-200 min-h-fit mt-20 mb-20 rounded-2lg px-8 py-8'>
         <div className='hero-content items-center flex-col lg:flex-row-reverse'>
           <div className='text-center'>
             <h1 className='text-5xl font-bold'>Login now!</h1>

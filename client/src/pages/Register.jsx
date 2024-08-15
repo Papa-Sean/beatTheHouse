@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Form, useNavigation, redirect } from 'react-router-dom';
 import { FormRow } from '../components';
-import customFetch from '../../utils/customFetch';
+import customFetch from '../utils/customFetch';
 import { toast } from 'react-toastify';
 
 export const action = async ({ request }) => {
@@ -22,7 +22,7 @@ const Register = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   return (
-    <div className='hero bg-base-200 min-h-screen'>
+    <div className='hero bg-base-200 min-h-fit mt-10 mb-10 rounded-2xl px-8 py-8'>
       <div className='hero-content flex-col lg:flex-row-reverse'>
         <div className='text-center lg:text-left'>
           <h1 className='text-5xl font-bold'>Register now!</h1>

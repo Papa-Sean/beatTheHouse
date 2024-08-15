@@ -18,7 +18,7 @@ router.route('/').get(getAllGames).post(validateGameInput, createGame);
 
 router
   .route('/:id')
-  .get(validateIdParam, getSingleGame)
+  .get(getSingleGame)
   .patch(validateGameInput, validateIdParam, updateGame)
   .delete(validateIdParam, deleteGame);
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Landing = () => {
   return (
-    <div className='hero bg-base-200 min-h-screen'>
+    <div className='hero bg-base-200 min-h-fit max-h-fit mt-20 mb-20 p-10 max-w-4xl'>
       <div className='hero-content text-center'>
         <div className='max-w-md'>
           <h1 className='text-5xl font-bold'>Beat The House</h1>

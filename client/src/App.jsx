@@ -1,7 +1,10 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import {
-  Dashboard,
+  AddBet,
+  AllBets,
+  AllGames,
+  DashboardLayout,
   Error,
   HomeLayout,
   Landing,
@@ -12,6 +15,12 @@ import {
 
 import { action as registerAction } from './pages/Register';
 import { action as loginAction } from './pages/Login';
+import { action as addBetAction } from './pages/AddBet';
+
+import { loader as dashboardLoader } from './pages/DashboardLayout';
+import { loader as allGamesLoader } from './pages/AllGames';
+import { loader as addBetLoader } from './pages/AddBet';
+import { loader as getAllBetsLoader } from './pages/AllBets';
 
 const router = createBrowserRouter([
   {
@@ -35,11 +44,30 @@ const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <Dashboard />,
-      },
-      {
-        path: 'userprofile',
-        element: <UserProfile />,
+        element: <DashboardLayout />,
+        loader: dashboardLoader,
+        children: [
+          {
+            index: true,
+            element: <AllGames />,
+            loader: allGamesLoader,
+          },
+          {
+            path: 'addbet/:id',
+            element: <AddBet />,
+            action: addBetAction,
+            loader: addBetLoader,
+          },
+          {
+            path: 'profile',
+            element: <UserProfile />,
+          },
+          {
+            path: 'allbets',
+            element: <AllBets />,
+            loader: getAllBetsLoader,
+          },
+        ],
       },
     ],
   },
