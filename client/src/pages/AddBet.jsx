@@ -54,7 +54,10 @@ const AddBet = () => {
   };
 
   return (
-    <Form method='post'>
+    <Form
+      method='post'
+      className='bg-base-200 align-element p-6 rounded-2xl'
+    >
       <FormRowSelect
         name='betTeam'
         labelText='bet team'
@@ -74,7 +77,7 @@ const AddBet = () => {
         defaultValue='100'
       />
       <button
-        className='btn btn-warning'
+        className='btn btn-warning  btn-block mt-8'
         type='submit'
       >
         Submit Bet

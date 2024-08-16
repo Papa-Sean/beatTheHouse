@@ -10,19 +10,21 @@ const FormRowSelect = ({
   onChange,
 }) => {
   return (
-    <div className='form-control'>
+    <div className='form-control items-center'>
       <label
         htmlFor={name}
         className='form-control w-full max-w-xs'
       >
         <div className='label'>
-          <span className='label-text'>{labelText || name}</span>
+          <span className='label-text uppercase font-bold'>
+            {labelText || name}
+          </span>
         </div>
         <select
           name={name}
           id={name}
           defaultValue={defaultValue}
-          className='select select-bordered'
+          className='select select-bordered w-auto'
           onChange={onChange}
         >
           {list.map((itemValue) => {

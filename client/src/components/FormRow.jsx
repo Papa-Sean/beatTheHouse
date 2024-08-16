@@ -2,18 +2,18 @@ import React from 'react';
 
 const FormRow = ({ type, name, labelText, defaultValue }) => {
   return (
-    <div className='form-control'>
+    <div className='form-control items-center text-left'>
       <label
         htmlFor={name}
-        className='label'
+        className='form-control w-full max-w-xs'
       >
-        <span className='label-text capitalize'>{labelText || name}</span>
+        <span className='label uppercase font-bold '>{labelText || name}</span>
       </label>
       <input
         type={type}
         id={name}
         name={name}
-        className='input input-bordered text-accent-content'
+        className='input input-bordered text-accent-content w-fit'
         defaultValue={defaultValue || ''}
         required
       />
