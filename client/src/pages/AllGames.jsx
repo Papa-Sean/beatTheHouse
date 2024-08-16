@@ -20,7 +20,7 @@ const AllGames = () => {
   const { data } = useLoaderData();
   return (
     <AllGamesContext.Provider value={{ data }}>
-      <SearchContainer />
+      {/* <SearchContainer /> */}
       <GamesContainer />
     </AllGamesContext.Provider>
   );
