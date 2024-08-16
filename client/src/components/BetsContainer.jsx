@@ -9,9 +9,9 @@ const BetsContainer = () => {
     return <div>No bets...</div>;
   }
   return (
-    <section className='grid'>
-      <h5>{bets.length} bets placed:</h5>
-      <div className='grid grid-cols-3 grid-flow'>
+    <section>
+      <h5 className='text-center'>{bets.length} bets placed:</h5>
+      <div className='grid md:grid-cols-3 gap-2 sm:grid-cols-1 grid-flow-row'>
         {bets.map((bet) => {
           return (
             <Bet

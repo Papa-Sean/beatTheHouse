@@ -17,7 +17,7 @@ const Game = ({
 }) => {
   const date = day(createdAt).format('MMM Do, YYYY');
   return (
-    <div className='card bg-primary text-primary-content w-96 mb-4'>
+    <div className='card bg-warning text-primary-content w-96 mb-4'>
       <div className='card-body place-content-center'>
         <h2 className='card-title'>
           {awayTeam} {awaySpread > 0 && '+'}
@@ -29,7 +29,7 @@ const Game = ({
         <div className='card-actions justify-end pt-4'>
           <Link
             to={`../dashboard/addbet/${_id}`}
-            className='btn btn-warning'
+            className='btn '
           >
             Bet Game
           </Link>
