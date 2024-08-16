@@ -37,13 +37,11 @@ const Login = () => {
                 className='form-control capitalize'
                 type='email'
                 name='email'
-                defaultValue='papa@papa.com'
               />
               <FormRow
                 className='form-control capitalize'
                 type='password'
                 name='password'
-                defaultValue='secret123'
               />
               <p>
                 Not a member? Register <span></span>

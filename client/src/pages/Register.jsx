@@ -36,32 +36,27 @@ const Register = () => {
               className='form-control capitalize'
               type='text'
               name='name'
-              defaultValue='Papa-Sean'
             />
             <FormRow
               className='form-control capitalize'
               type='text'
               name='lastName'
               labelText='last name'
-              defaultValue='Doe'
             />
             <FormRow
               className='form-control capitalize'
               type='location'
               name='location'
-              defaultValue='Detroit'
             />
             <FormRow
               className='form-control capitalize'
               type='email'
               name='email'
-              defaultValue='papa@papa.com'
             />
             <FormRow
               className='form-control capitalize'
               type='password'
               name='password'
-              defaultValue='secret123'
             />
             <div className='form-control mt-6'>
               <button
