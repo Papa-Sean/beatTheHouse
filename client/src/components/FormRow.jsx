@@ -2,7 +2,7 @@ import React from 'react';
 
 const FormRow = ({ type, name, labelText, defaultValue }) => {
   return (
-    <div className='form-control items-center text-left'>
+    <div className='form-control items-center text-left align-element'>
       <label
         htmlFor={name}
         className='form-control w-full max-w-xs'

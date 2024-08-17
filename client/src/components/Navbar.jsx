@@ -29,7 +29,10 @@ const Navbar = () => {
         >
           User Profile
         </NavLink>
-        <NavLink className='btn btn-sm btn-warning mx-2'>
+        <NavLink
+          to='leaderboard'
+          className='btn btn-sm btn-warning mx-2'
+        >
           Overall Scoreboard
         </NavLink>
       </div>

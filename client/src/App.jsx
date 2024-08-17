@@ -8,6 +8,7 @@ import {
   Error,
   HomeLayout,
   Landing,
+  LeaderBoard,
   Login,
   Register,
   UserProfile,
@@ -21,6 +22,8 @@ import { loader as dashboardLoader } from './pages/DashboardLayout';
 import { loader as allGamesLoader } from './pages/AllGames';
 import { loader as addBetLoader } from './pages/AddBet';
 import { loader as getAllBetsLoader } from './pages/AllBets';
+import { loader as leaderBoardLoader } from './pages/LeaderBoard';
+import { loader as userProfileLoader } from './pages/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -61,11 +64,17 @@ const router = createBrowserRouter([
           {
             path: 'profile',
             element: <UserProfile />,
+            loader: userProfileLoader,
           },
           {
             path: 'allbets',
             element: <AllBets />,
             loader: getAllBetsLoader,
+          },
+          {
+            path: 'leaderboard',
+            element: <LeaderBoard />,
+            loader: leaderBoardLoader,
           },
         ],
       },
