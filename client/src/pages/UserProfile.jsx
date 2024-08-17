@@ -1,7 +1,6 @@
 import React from 'react';
 import customFetch from '../utils/customFetch';
-import { redirect, useLoaderData, useOutletContext } from 'react-router-dom';
-import { useDashboardContext } from './DashboardLayout';
+import { redirect, useLoaderData } from 'react-router-dom';
 
 export const loader = async () => {
   try {
@@ -12,19 +11,6 @@ export const loader = async () => {
     return redirect('/');
   }
 };
-
-// const userFetch = async () => {
-//   try {
-//     const { data } = await customFetch.get('/users/current-user');
-//     return data;
-//   } catch (error) {
-//     return redirect('/');
-//   }
-
-// const { userData } = await customFetch.get('users/current-user');
-// const user = userData;
-// };
-// const user = userFetch();
 
 const UserProfile = () => {
   const { user, bets } = useLoaderData();
