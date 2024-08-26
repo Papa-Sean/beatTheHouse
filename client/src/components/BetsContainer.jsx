@@ -10,7 +10,7 @@ const BetsContainer = () => {
     return <div>No bets...</div>;
   }
   return (
-    <section>
+    <section className='align-element'>
       <h5 className='text-5xl font-extrabold uppercase mb-4'>
         {totalBets} bet{bets.length > 1 && 's'} placed:
       </h5>
