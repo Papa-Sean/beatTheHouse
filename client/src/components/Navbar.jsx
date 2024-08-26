@@ -8,10 +8,10 @@ const Navbar = () => {
   return (
     <div className='sticky top-0 z-10 bg-base-200'>
       <div className='grid grid-cols-12'>
-        <div className='grid col-span-2 items-center'>
+        <div className='grid sm:col-span-2 col-span-5 items-center'>
           <a className='btn btn-ghost text-xl'>BTH</a>
         </div>
-        <div className='grid col-span-7 items-center'>
+        <div className='grid sm:col-span-7 items-center'>
           <div className='hidden sm:grid sm:grid-flow-col'>
             <NavLink
               to='.'
@@ -39,7 +39,7 @@ const Navbar = () => {
             </NavLink>
           </div>
         </div>
-        <div className='grid col-span-3 items-start'>
+        <div className='grid sm:col-span-3 col-span-6 items-start'>
           <button
             className='btn btn-ghost text-xl uppercase '
             onClick={logoutUser}
