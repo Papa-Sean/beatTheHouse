@@ -27,10 +27,10 @@ const Dashboard = () => {
 
   return (
     <DashboardContext.Provider value={{ user, logoutUser }}>
-      <main className=''>
+      <main>
         <div>
-          <Navbar className='navbar' />
-          <div className='px-6 py-12'>
+          <Navbar />
+          <div>
             <Outlet context={{ user }} />
           </div>
         </div>

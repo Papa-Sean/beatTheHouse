@@ -22,67 +22,69 @@ const Register = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   return (
-    <div className='hero bg-base-200 min-h-fit mt-20 mb-20 rounded-2xl px-8 py-8 m-4 '>
-      <div className='grid sm:grid-cols-2 gap-8'>
-        <div className='grid'>
-          <h1 className='grid place-content-center text-3xl font-bold'>
-            Register now!
-          </h1>
-        </div>
-        <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl'>
-          <Form
-            method='post'
-            className='grid m-8'
-          >
-            <FormRow
-              className='grid capitalize'
-              type='text'
-              name='name'
-            />
-            <FormRow
-              className='form-control capitalize'
-              type='text'
-              name='lastName'
-              labelText='last name'
-            />
-            <FormRow
-              className='form-control capitalize'
-              type='location'
-              name='location'
-            />
-            <FormRow
-              className='form-control capitalize'
-              type='email'
-              name='email'
-            />
-            <FormRow
-              className='form-control capitalize'
-              type='password'
-              name='password'
-            />
-            <div className='form-control mt-6'>
-              <button
-                type='submit'
-                className='btn btn-block btn-warning'
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
-              </button>
-            </div>
+    <main className='align-element'>
+      <div className='hero bg-base-200 min-h-fit mt-20 mb-20 rounded-2xl px-8 py-8 m-4 '>
+        <div className='grid sm:grid-cols-2 gap-8'>
+          <div className='grid'>
+            <h1 className='grid place-content-center text-3xl font-bold'>
+              Register now!
+            </h1>
+          </div>
+          <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl'>
+            <Form
+              method='post'
+              className='grid m-8'
+            >
+              <FormRow
+                className='grid capitalize'
+                type='text'
+                name='name'
+              />
+              <FormRow
+                className='form-control capitalize'
+                type='text'
+                name='lastName'
+                labelText='last name'
+              />
+              <FormRow
+                className='form-control capitalize'
+                type='location'
+                name='location'
+              />
+              <FormRow
+                className='form-control capitalize'
+                type='email'
+                name='email'
+              />
+              <FormRow
+                className='form-control capitalize'
+                type='password'
+                name='password'
+              />
+              <div className='form-control mt-6'>
+                <button
+                  type='submit'
+                  className='btn btn-block btn-warning'
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
+                </button>
+              </div>
 
-            <p>
-              Already a member? <span></span>
-              <Link
-                to='/login'
-                className='member-btn'
-              >
-                Login
-              </Link>
-            </p>
-          </Form>
+              <p>
+                Already a member? <span></span>
+                <Link
+                  to='/login'
+                  className='member-btn'
+                >
+                  Login
+                </Link>
+              </p>
+            </Form>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

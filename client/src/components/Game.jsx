@@ -17,9 +17,9 @@ const Game = ({
 }) => {
   const date = day(createdAt).format('MMM Do, YYYY');
   return (
-    <div className='card bg-warning text-primary-content w-96 mb-4'>
-      <div className='card-body place-content-center'>
-        <h2 className='card-title'>
+    <div className='card bg-warning text-primary-content w-64 mb-4 pb-4'>
+      <div className='grid grid-cols-1 justify-items-center'>
+        <h2 className='card-title p-4'>
           {awayTeam} {awaySpread > 0 && '+'}
           {awaySpread} @ {homeTeam} {homeSpread > 0 && '+'}
           {homeSpread}

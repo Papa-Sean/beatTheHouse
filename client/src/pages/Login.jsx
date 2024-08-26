@@ -22,7 +22,7 @@ const Login = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   return (
-    <>
+    <main className='align-element'>
       <div className='hero bg-base-200 min-h-fit mt-20 mb-20 rounded-2xl px-8 py-8 m-4'>
         <div className='grid sm:grid-cols-2 gap-8'>
           <div className='grid '>
@@ -67,7 +67,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </>
+    </main>
   );
 };
 

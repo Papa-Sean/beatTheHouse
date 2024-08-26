@@ -6,54 +6,47 @@ import { Link, NavLink } from 'react-router-dom';
 const Navbar = () => {
   const { logoutUser } = useDashboardContext();
   return (
-    <div className='navbar bg-base-200'>
-      <div className='flex-1'>
-        <a className='btn btn-ghost text-xl'>BTH</a>
-      </div>
-      <div className='py-2 ml-11 flex-grow md:visible lg:visible '>
-        <NavLink
-          to='.'
-          className='btn btn-sm btn-warning mx-2'
-        >
-          All Games
-        </NavLink>
-        <NavLink
-          to='allbets'
-          className='btn btn-sm btn-warning mx-2'
-        >
-          All Bets
-        </NavLink>
-        <NavLink
-          to='profile'
-          className='btn btn-sm btn-warning mx-2'
-        >
-          User Profile
-        </NavLink>
-        <NavLink
-          to='leaderboard'
-          className='btn btn-sm btn-warning mx-2'
-        >
-          Overall Scoreboard
-        </NavLink>
-      </div>
-      <div className='flex-none'>
-        <ul className='menu menu-horizontal px-1'>
-          <li>
-            <details>
-              <summary>Logout</summary>
-              <ul className='bg-base-100 rounded-t-none p-2'>
-                <li>
-                  <button
-                    className='btn btn-warning'
-                    onClick={logoutUser}
-                  >
-                    Logout
-                  </button>
-                </li>
-              </ul>
-            </details>
-          </li>
-        </ul>
+    <div className='sticky top-0 z-10 bg-base-200'>
+      <div className='grid grid-cols-12'>
+        <div className='grid col-span-2 items-center'>
+          <a className='btn btn-ghost text-xl'>BTH</a>
+        </div>
+        <div className='grid col-span-7 items-center'>
+          <div className='hidden sm:grid sm:grid-flow-col'>
+            <NavLink
+              to='.'
+              className='btn btn-ghost uppercase'
+            >
+              All Games
+            </NavLink>
+            <NavLink
+              to='allbets'
+              className='btn btn-ghost uppercase'
+            >
+              All Bets
+            </NavLink>
+            <NavLink
+              to='profile'
+              className='btn btn-ghost uppercase'
+            >
+              User Profile
+            </NavLink>
+            <NavLink
+              to='leaderboard'
+              className='btn btn-ghost uppercase'
+            >
+              Overall Scoreboard
+            </NavLink>
+          </div>
+        </div>
+        <div className='grid col-span-3 items-start'>
+          <button
+            className='btn btn-ghost text-xl uppercase '
+            onClick={logoutUser}
+          >
+            Logout
+          </button>
+        </div>
       </div>
     </div>
   );

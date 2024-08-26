@@ -9,8 +9,8 @@ const GamesContainer = () => {
     return <h2>No games to display...</h2>;
   }
   return (
-    <section className='align-element gap-10 my-10'>
-      <div className='flex-col md:columns-2 sm:columns-1 sm:align-element'>
+    <section className='grid py-8'>
+      <div className='grid justify-items-center md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-2'>
         {games.map((game) => {
           return (
             <Game
