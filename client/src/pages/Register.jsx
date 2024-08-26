@@ -22,18 +22,20 @@ const Register = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   return (
-    <div className='hero bg-base-200 min-h-fit mt-10 mb-10 rounded-2xl '>
-      <div className='hero-content flex-col lg:flex-row-reverse'>
-        <div className='text-center lg:text-left'>
-          <h1 className='text-5xl font-bold'>Register now!</h1>
+    <div className='hero bg-base-200 min-h-fit mt-20 mb-20 rounded-2xl px-8 py-8 m-4 '>
+      <div className='grid sm:grid-cols-2 gap-8'>
+        <div className='grid'>
+          <h1 className='grid place-content-center text-3xl font-bold'>
+            Register now!
+          </h1>
         </div>
         <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl'>
           <Form
             method='post'
-            className='card-body'
+            className='grid m-8'
           >
             <FormRow
-              className='form-control capitalize'
+              className='grid capitalize'
               type='text'
               name='name'
             />
@@ -64,7 +66,7 @@ const Register = () => {
                 className='btn btn-block btn-warning'
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'submitting...' : 'submit'}
+                {isSubmitting ? 'SUBMITTING...' : 'SUBMIT'}
               </button>
             </div>
 

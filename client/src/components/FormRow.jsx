@@ -2,10 +2,10 @@ import React from 'react';
 
 const FormRow = ({ type, name, labelText, defaultValue }) => {
   return (
-    <div className='form-control items-center text-left align-element'>
+    <div className='grid'>
       <label
         htmlFor={name}
-        className='form-control w-full max-w-xs'
+        className='grid'
       >
         <span className='label uppercase font-bold '>{labelText || name}</span>
       </label>
@@ -13,7 +13,7 @@ const FormRow = ({ type, name, labelText, defaultValue }) => {
         type={type}
         id={name}
         name={name}
-        className='input input-bordered text-accent-content w-fit'
+        className='input input-bordered text-accent-content grid'
         defaultValue={defaultValue || ''}
         required
       />

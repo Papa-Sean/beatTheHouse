@@ -23,10 +23,12 @@ const Login = () => {
   const isSubmitting = navigation.state === 'submitting';
   return (
     <>
-      <div className='hero bg-base-200 min-h-fit mt-20 mb-20 rounded-2lg px-8 py-8'>
-        <div className='hero-content items-center flex-col lg:flex-row-reverse'>
-          <div className='text-center'>
-            <h1 className='text-5xl font-bold'>Login now!</h1>
+      <div className='hero bg-base-200 min-h-fit mt-20 mb-20 rounded-2xl px-8 py-8 m-4'>
+        <div className='grid sm:grid-cols-2 gap-8'>
+          <div className='grid '>
+            <h1 className='grid place-content-center text-5xl font-bold'>
+              Login now!
+            </h1>
           </div>
           <div className='card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl'>
             <Form
@@ -55,7 +57,7 @@ const Login = () => {
 
               <div className='form-control mt-6'>
                 <button
-                  className='btn btn-warning'
+                  className='btn btn-warning uppercase'
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'submitting...' : 'submit'}
