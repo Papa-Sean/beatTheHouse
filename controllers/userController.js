@@ -8,6 +8,11 @@ export const getCurrentUser = async (req, res) => {
   res.status(StatusCodes.OK).json({ userWithoutPassword });
 };
 
+export const getAllUsers = async (req, res) => {
+  const users = await User.find({});
+  res.status(StatusCodes.OK).json({ users });
+};
+
 export const getApplicationStats = async (req, res) => {
   const users = await User.countDocuments();
   const games = await Game.countDocuments();
