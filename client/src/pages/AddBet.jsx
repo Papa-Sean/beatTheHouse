@@ -9,11 +9,11 @@ import {
   useNavigation,
   useOutletContext,
 } from 'react-router-dom';
-import { FormRow } from '../components';
+import { BetsContainer, FormRow } from '../components';
 
 export const loader = async ({ params }) => {
   try {
-    const { data } = await customFetch.get(`/games/${params.id}`);
+    const { data } = await customFetch.get(`/api-games/${params.id}`);
     return data;
   } catch (error) {
     toast.error(error?.response?.data?.msg);
@@ -40,49 +40,57 @@ const AddBet = () => {
   const { game } = useLoaderData();
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
-  const [betTeam, setBetTeam] = useState(game.homeTeam);
-  const [betSpread, setBetSpread] = useState(game.homeSpread);
+  const [betTeam, setBetTeam] = useState(game.home_team);
+  const [betSpread, setBetSpread] = useState(game.home_spread);
   const handleOnChange = () => {
-    if (betTeam !== game.awayTeam) {
-      setBetTeam(game.awayTeam);
-      setBetSpread(game.awaySpread);
+    if (betTeam !== game.away_team) {
+      setBetTeam(game.away_team);
+      setBetSpread(game.away_spread);
       return null;
     }
-    setBetTeam(game.homeTeam);
-    setBetSpread(game.homeSpread);
+    setBetTeam(game.home_team);
+    setBetSpread(game.home_spread);
     return null;
   };
 
   return (
-    <Form
-      method='post'
-      className='bg-base-200 align-element p-6 rounded-2xl'
-    >
-      <FormRowSelect
-        name='betTeam'
-        labelText='bet team'
-        defaultValue={game.homeTeam}
-        list={[game.homeTeam, game.awayTeam]}
-        onChange={handleOnChange}
-      />
-      <FormRowSelect
-        name='betSpread'
-        labelText='spread'
-        list={[betSpread]}
-      />
-      <FormRow
-        type='number'
-        name='betAmount'
-        labelText='bet amount'
-        defaultValue='100'
-      />
-      <button
-        className='btn btn-warning  btn-block mt-8'
-        type='submit'
+    <container className='grid grid-cols-1 p-8'>
+      <Form
+        method='post'
+        className='bg-base-200 align-element p-6 rounded-2xl'
       >
-        Submit Bet
-      </button>
-    </Form>
+        <FormRowSelect
+          name='gameId'
+          labelText='Game ID'
+          defaultValue={game.gameId}
+          list={[game.gameId]}
+        />
+        <FormRowSelect
+          name='betTeam'
+          labelText='bet team'
+          defaultValue={game.home_team}
+          list={[game.home_team, game.away_team]}
+          onChange={handleOnChange}
+        />
+        <FormRowSelect
+          name='betSpread'
+          labelText='spread'
+          list={[betSpread]}
+        />
+        <FormRow
+          type='number'
+          name='betAmount'
+          labelText='bet amount'
+          defaultValue='100'
+        />
+        <button
+          className='btn btn-warning  btn-block mt-8'
+          type='submit'
+        >
+          Submit Bet
+        </button>
+      </Form>
+    </container>
   );
 };
 

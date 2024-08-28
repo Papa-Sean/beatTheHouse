@@ -104,8 +104,6 @@ export const validateUpdateUserInput = withValidationErrors([
 ]);
 
 export const validateBetInput = withValidationErrors([
-  body('betTeam')
-    .isIn(Object.values(NFL_TEAMS))
-    .withMessage('Invalid team entry, try again.'),
+  body('betTeam').notEmpty().withMessage('Invalid team entry, try again.'),
   body('betAmount').notEmpty().withMessage('Bet amount required...'),
 ]);

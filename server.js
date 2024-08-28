@@ -12,6 +12,7 @@ import mongoSanitize from 'express-mongo-sanitize';
 
 // ROUTERS
 import gamesRouter from './routes/gamesRouter.js';
+import apiGamesRouter from './routes/apiGamesRouter.js';
 import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
 import betsRouter from './routes/betsRouter.js';
@@ -52,6 +53,7 @@ app.get('/api/v1/test', (req, res) => {
 });
 
 app.use('/api/v1/games', authenticateUser, gamesRouter);
+app.use('/api/v1/api-games', apiGamesRouter);
 app.use('/api/v1/users', authenticateUser, userRouter);
 app.use('/api/v1/bets', authenticateUser, betsRouter);
 app.use('/api/v1/auth', authRouter);

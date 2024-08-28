@@ -1,8 +1,10 @@
+export { default as AddAPIGame } from './AddAPIGame';
 export { default as AddBet } from './AddBet';
 export { default as AllBets } from './AllBets';
 export { default as AllGames } from './AllGames';
 export { default as DashboardLayout } from './DashboardLayout';
 export { default as Error } from './Error';
+export { default as GetAPIGames } from './GetAPIGames';
 export { default as HomeLayout } from './HomeLayout';
 export { default as Landing } from './Landing';
 export { default as LeaderBoard } from './LeaderBoard';

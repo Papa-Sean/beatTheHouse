@@ -1,11 +1,13 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './index.css';
 import {
+  AddAPIGame,
   AddBet,
   AllBets,
   AllGames,
   DashboardLayout,
   Error,
+  GetAPIGames,
   HomeLayout,
   Landing,
   LeaderBoard,
@@ -17,6 +19,7 @@ import {
 import { action as registerAction } from './pages/Register';
 import { action as loginAction } from './pages/Login';
 import { action as addBetAction } from './pages/AddBet';
+import { action as addAPIGameAction } from './pages/AddAPIGame';
 
 import { loader as dashboardLoader } from './pages/DashboardLayout';
 import { loader as allGamesLoader } from './pages/AllGames';
@@ -24,6 +27,7 @@ import { loader as addBetLoader } from './pages/AddBet';
 import { loader as getAllBetsLoader } from './pages/AllBets';
 import { loader as leaderBoardLoader } from './pages/LeaderBoard';
 import { loader as userProfileLoader } from './pages/UserProfile';
+// import { loader as getAPIGamesLoader } from './pages/GetAPIGames';
 
 const router = createBrowserRouter([
   {
@@ -76,6 +80,11 @@ const router = createBrowserRouter([
             element: <LeaderBoard />,
             loader: leaderBoardLoader,
           },
+          // {
+          //   path: 'addAPIgame',
+          //   element: <AddAPIGame />,
+          //   action: addAPIGameAction,
+          // },
         ],
       },
     ],

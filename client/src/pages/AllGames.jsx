@@ -6,7 +6,7 @@ import { SearchContainer, GamesContainer } from '../components';
 
 export const loader = async () => {
   try {
-    const { data } = await customFetch.get('/games');
+    const { data } = await customFetch.get('/api-games');
     return { data };
   } catch (error) {
     toast.error(error?.response?.data?.msg);
