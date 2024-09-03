@@ -7,7 +7,9 @@ const Bet = ({ _id, betTeam, betSpread, betAmount }) => {
         <header className='text-center font-extrabold text-5xl mb-4'>
           Bet Slip
         </header>
-        <h2 className='text-center font-bold text-2xl'>You bet: {betAmount}</h2>
+        <h2 className='text-center font-bold text-2xl'>
+          Units bet: {betAmount}
+        </h2>
         <h2 className='text-center font-bold text-2xl'>On: {betTeam}</h2>
         <h2 className='text-center font-bold text-2xl'>At: {betSpread}</h2>
       </div>

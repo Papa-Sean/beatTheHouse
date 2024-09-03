@@ -19,21 +19,30 @@ const UserProfile = () => {
   return (
     <section className='p-16'>
       <div className='skeleton align-element p-8'>
-        <section className='grid grid-cols-2 gap-4'>
-          <h1 className='text-5xl text-center font-bold mb-8'>User Name:</h1>
-          <h1 className='text-5xl text-center font-bold mb-8'>
+        <section className='grid sm:grid-cols-2 grid-cols-1 gap-4'>
+          <h1 className='sm:text-5xl sm:text-center text-3xl text-left font-bold mb-4'>
+            User Name:
+          </h1>
+          <h1 className='sm:text-5xl sm:text-center text-3xl text-left font-bold mb-4'>
             {user.userWithoutPassword.name}
           </h1>
-          <h1 className='text-3xl font-bold mb-4'>User Location:</h1>
-          <h1 className='text-3xl font-bold mb-4 text-center'>
+          <h1 className='text-2xl sm:text-3xl font-bold mb-4'>
+            User Location:
+          </h1>
+          <h1 className='text-2xl sm:text-3xl font-bold mb-4 text-center'>
             {user.userWithoutPassword.location}
           </h1>
-          <h1 className='text-3xl font-bold mb-4'>Total Bets Placed:</h1>
-          <h1 className='text-3xl font-bold mb-4 text-center'>
+          <h1 className='text-2xl sm:text-3xl font-bold mb-4'>Total Bets:</h1>
+          <h1 className='text-2xl sm:text-3xl font-bold mb-4 text-center'>
             {bets.totalBets}
           </h1>
-          <h1 className='text-3xl font-bold mb-4'>Total Winnings: </h1>
-          <h1 className='text-3xl font-bold mb-4 text-center'> $0</h1>
+          <h1 className='text-2xl sm:text-3xl font-bold mb-4'>
+            Total Winnings:{' '}
+          </h1>
+          <h1 className='text-2xl sm:text-3xl font-bold mb-4 text-center'>
+            {' '}
+            Units: 0
+          </h1>
         </section>
       </div>
     </section>
